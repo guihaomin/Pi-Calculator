@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <thread>
-#define thread_count 1
+#define thread_count 6
 #define divide_precision 100
 using namespace std;
 string thread_result[thread_count];
@@ -14,12 +14,16 @@ string strDiv(int a, int b, int precision) {
     result = a / b;
     string ans = "";
     int tmp = result;
+    string temp = "";
     if (result == 0) {
         ans.push_back('0');
     }
     else {
         while (tmp != 0) {
-            ans.push_back('0' + (tmp % 10));
+            temp = "";
+            temp.push_back('0' + (tmp % 10));
+            //ans.push_back('0' + (tmp % 10));
+            ans = temp + ans;
             tmp /= 10;
         }
     }
@@ -27,6 +31,7 @@ string strDiv(int a, int b, int precision) {
     ans.push_back('.');
     a = a - result * b;
     a *= 10;
+    
     while (precision > 0) {
         result = a / b;
         remainder = a - result * b;
@@ -228,4 +233,16 @@ int main()
     result = strMinus(result, to_string(thread_count_float));
 
     cout << "The value of pi/4 is " << result;
+    
 }
+
+// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
+// Debug program: F5 or Debug > Start Debugging menu
+
+// Tips for Getting Started: 
+//   1. Use the Solution Explorer window to add/manage files
+//   2. Use the Team Explorer window to connect to source control
+//   3. Use the Output window to see build output and other messages
+//   4. Use the Error List window to view errors
+//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
+//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
