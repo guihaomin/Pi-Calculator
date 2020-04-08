@@ -229,4 +229,3 @@ int main()
 
     cout << "The value of pi/4 is " << result;
 }
-oject again, go to File > Open > Project and select the .sln file
